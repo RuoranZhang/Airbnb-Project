@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <title>Our Airbnb</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport"> 
+    <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon1.ico')}}">
+<style>
+  .button{
+    font-family: monospace;
+    background-color: rgb(252, 106, 113);
+    color: white;
+    border-radius: 8px;
+  }
+</style>
+
+</head>
+
+
+<header>
+
+  
+    <div class="navbar-header">
+      
+      <a class="navbar-brand" href="/">
+
+      <img style="max-width:120px; margin-top: -7px;" src="{{url_for('static',filename='images/mainlogo.png')}}">
+
+      </a>
+    </div>
+
+
+   
+    <div class="container-fluid">
+  
+
+  <a href="/for_host/"><button type="button" class="button" aria-label="Left Align" style="margin-top: 8px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+    <span class="glyphicon glyphicon-home" aria-hidden="true"></span> For Host
+  </button></a>
+
+    
+    <a href="/for_rent/"><button type="button" class="button" aria-label="Left Align" style="margin-top: 8px; margin-bottom: 5px; height: 44px; margin-right: 15px">
+    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> For Guest
+  </button></a>
+  
+  
+    
+
+  
+
+     </div>
+
+
+</header>
+
+
+<body>
+    
+    <div class="broader-row" style="width:100%; margin-bottom: 15px;"> </div>
+
+    <div class="container-fluid" style="min-height:100% width">
+      {%block body%}  {%endblock%}
+
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <script type="text/javascript" src="{{url_for('static',filename='js/bootstrap.min.js') }}"></script>
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </html>
+

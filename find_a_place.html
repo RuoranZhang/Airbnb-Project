@@ -1,0 +1,92 @@
+{%extends "header.html"%}
+
+{%block body%}
+<head>
+	<style>
+	h2{
+		font-family: fantasy;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: grey;
+	}
+	h5{
+		color: black;
+	}
+	td{margin-right: 20px;}
+	</style>
+</head>
+<hr>
+<div>
+<center>
+<h2> Top Five Recommondation</h2>
+   
+<center>
+<figure>
+	<a href="{{id_list_[0]}}"> 
+	<img src="{{picture_list_[0]}}" alt="WOOPS, NOT AVALIABLE" style="width:300px;height:300px;">
+	<figcaption> <h5>{{name_list_[0]}} </h5></figcaption>
+	</figure>
+	</center>
+	<div><center><i>price/person: {{price_list_[0]}}</i></center></div>
+
+<center>
+	<table style="margin:10px auto;">
+		<tbody>
+			<tr>
+
+			<td>
+				<figure>
+				<a href="{{id_list_[1]}}"> 
+				<img src="{{picture_list_[1]}}" alt="WOOPS, NOT AVALIABLE" style="width:250px;height:250px;">
+				<center><figcaption> <h5>{{name_list_[1]}} </h5></figcaption></center>
+				</figure>
+			</td>
+			<td>&nbsp;</td>
+			<td>
+				<figure>
+				<a href="{{id_list_[2]}}"> 
+				<img src="{{picture_list_[2]}}" alt="WOOPS, NOT AVALIABLE" style="width:250px;height:250px;">
+				<center><figcaption> <h5>{{name_list_[2]}} </h5></figcaption></center>
+				</figure>
+			</td>
+			<td>&nbsp;</td>
+			<td>
+				<figure>
+				<a href="{{id_list_[3]}}"> 
+				<img src="{{picture_list_[3]}}" alt="WOOPS, NOT AVALIABLE" style="width:250px;height:250px;">
+				<center><figcaption> <h5>{{name_list_[3]}} </h5></figcaption></center>
+				</figure>
+			</td>
+			<td>&nbsp;</td>	
+			<td>
+				<figure>
+				<a href="{{id_list_[4]}}"> 
+				<img src="{{picture_list_[4]}}" alt="WOOPS, NOT AVALIABLE" style="width:250px;height:250px;">
+				<center><figcaption> <h5>{{name_list_[4]}} </h5></figcaption></center>
+				</figure>
+			</td>
+
+			</tr>
+			<tr>
+			<td><center><i>price/person: {{price_list_[1]}}</i></center></td>
+			<td>&nbsp;</td>
+			<td><center><i>price/person: {{price_list_[2]}}</i></center></td>
+			<td>&nbsp;</td>
+			<td><center><i>price/person: {{price_list_[3]}}</i></center></td>
+			<td>&nbsp;</td>
+			<td><center><i>price/person: {{price_list_[4]}}</i></center></td>
+			</tr>
+		</tbody>
+	</table>
+</center>
+
+
+</center>
+
+
+
+  </div>
+
+
+{%endblock%}

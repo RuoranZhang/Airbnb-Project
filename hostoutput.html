@@ -1,0 +1,174 @@
+{% extends "header.html" %} 
+{%block body%}
+<head>
+<style>
+#table1 th {
+  font-family: monospace;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 4px;
+  border: 1px solid #ddd;
+}
+#table1 td {
+  font-family: monospace;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px 4px;
+  border: 1px solid #ddd;
+}
+#table2 caption{
+  color:grey;
+  font-size: 15px;
+  text-align: center;
+}
+#table2 th,td{
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 3px;
+}
+#price {font-family: Tahoma;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.button1{background-color: #e7e7e7; color: black;
+    font-size: 20px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    padding: 2px 6px;
+    vertical-align: middle;
+    font-family: monospace;
+    margin-top: 20px;
+  }
+  .button1:hover {
+    background-color: rgb(252, 106, 113);
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+</head>
+<hr>
+<div>
+        <table id="table1" class="w3-table" style="width: 65%; height: 65%; margin: 0px auto;">
+           <thead>
+                <tr>
+                    <th colspan="3">Neighbourhood
+                    <th colspan="3">Room Type
+                </tr>
+           </thead>
+           <tbody>
+               <tr>
+                   <td colspan="3">{{neighbourhood}}
+                   <td colspan="3">{{room_type}}
+               </tr>
+           </tbody>
+           <thead>
+                <tr>
+                    <th colspan="2">Accommodates
+                    <th colspan="2">Bathrooms
+                    <th colspan="2">Bedrooms
+                </tr>
+           </thead>
+           <tbody>
+               <tr>
+                   <td colspan="2">{{accommodates}}
+                   <td colspan="2">{{bathrooms}}
+                   <td colspan="2">{{bedrooms}}
+               </tr>
+           </tbody>
+           <thead>
+                <tr>
+                    <th colspan="2">Cleanliness Score
+                    <th colspan="2">Communication Score
+                    <th colspan="2">Location Score
+                </tr>
+           </thead>
+           <tbody>
+               <tr>
+                   <td colspan="2">{{cleanliness}}
+                   <td colspan="2">{{communication}}
+                   <td colspan="2">{{location}}
+               </tr>
+           </tbody>
+      </table>
+</div>
+<hr>
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#price" aria-controls="price" role="tab" data-toggle="tab">Suggested Price</a></li>
+    <li role="presentation"><a href="#key_word" aria-controls="key_word" role="tab" data-toggle="tab">Room Description Guideline</a></li>
+    <li role="presentation"><a href="#model_accuracy" aria-controls="model_accuracy" role="tab" data-toggle="tab">Model Accuracy</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="price">
+<h1>Price: {{price}}</h1>
+<h5>
+  <p>The price above is calculated based on the assessment of the room's basic information and cleanliness, communication, location scores you conducted. </p>
+  <p>Please notice that inevitable bias exists between the recommended price and the optimal price.</p>  
+  <p>Thank you for using our service and provide a beautiful sweet home for visitors in NYC!</p>
+</h5>
+  </div>
+
+
+ <div role="tabpanel" class="tab-pane fade" id="key_word">
+    <div style="width:100%; margin:0 auto; overflow:auto; _display:inline-block;"> 
+    <div style="width:500px; float:left; background:white margin-top:100px; margin-left: 75px;">
+  <h2><b>Top words in the comments!</b></h2>
+  <h5>
+  <p>Dear customers: <p>
+  <p>According to our analysis, the most emphasized aspects of your apartment for visitors are as following, and we highly recommend you should include these factors above in the description of your apartment.</p>
+  <p>Here are some key points we want to remind you of:
+  <ul>
+  <li>transport: the time and the route to the closest subway and bus station near you apartment, taxi service number you usually use. </li>
+  <li>quiet: remind the visitor and provide ear plug if there is major noise complain in your neighbourhood. </li>
+  <li>host: please provide clear check-in procedure and your contact info and specify during which period of time you can be reached. </li>
+  <li>clean: describe how often do you clean the house and where the cleaning tools are stored.</li></ul></p>
+  <p>Thank you for using our service and provide a beautiful sweet home for visitors in NYC!</p></h5>
+  </div>
+  <div style=" margin-left:150px; background:white">
+  <img src="{{ url_for('static',filename='images/key_word.png') }}" height=400 width=400> 
+  </div>
+  </div>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="model_accuracy">
+  <div style="width: 75%; align-content: center; margin-left: 160px;">
+  <h5>
+    <p>Dear custormers:</p>
+    <p>The regression model indicates the relation between the current price and rating of the apartment in terms of room type, accommodates, number of bathrooms and bedrooms and review scores of communication, loaction, cleanliness from former costmers.</p>
+    <p>We will constantly improve the predicative effect of our model and provide best service to you!</p>
+  </h5>
+  </div>
+  <p id="comparison" align="center">
+   {% if neighbourhood=="Manhattan" %}
+    <img src="{{ url_for('static',filename='images/comparisonManhattan.png') }}" height=350 width=900>
+    {% endif %} 
+    {% if neighbourhood=="Brooklyn" %}
+    <img src="{{ url_for('static',filename='images/comparisonBrooklyn.png') }}" height=350 width=900>
+    {% endif %}
+    {% if neighbourhood=="Queens" %}
+    <img src="{{ url_for('static',filename='images/comparisonQueens.png') }}" height=350 width=900>
+    {% endif %}
+    {% if neighbourhood=="Bronx" %}
+    <img src="{{ url_for('static',filename='images/comparisonBronx.png') }}" height=350 width=900>
+    {% endif %}
+    {% if neighbourhood=="Staten Island" %}
+    <img src="{{ url_for('static',filename='images/comparisonStatenIsland.png') }}" height=350 width=900>
+    {% endif %}
+    </p>
+    <p>
+    
+
+
+<div align="center">
+    <a href="/for_host/"><button type="button" class="button1" aria-label="Left Align">
+    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Back
+  </button></a>
+  </div>
+{% endblock %}
+        

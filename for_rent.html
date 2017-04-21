@@ -1,0 +1,441 @@
+{%extends "header.html"%}
+
+{%block body%}
+<head>
+<style>
+ul{font-size:10px;}
+  caption{
+  font-family: fantasy;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+label{font-family: monospace;
+  font-size: 13px;}
+td {
+  text-align: center;
+  padding: 5px 5px;
+  border: 1px solid #ddd;
+}
+ .button1{background-color: #e7e7e7; color: black;
+    font-size: 15px;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+    padding: 1px 6px;
+    vertical-align: middle;
+    font-family: monospace;
+    margin-top: 20px;
+  }
+  .button1:hover {
+    background-color: rgb(252, 106, 113);
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+</style>
+</head>
+<hr>
+<center>
+<form action="{{ url_for('find_a_place') }}" method='post'>
+
+<div>
+<table style="width: 65%; height: 65%; margin: 0px auto;"><caption><b>Choose your preference!</b></caption>
+<tbody>
+<tr>
+<td>
+
+<!--   <input type="hidden" name="accommodates" value="A,A"> -->
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="accommodates">accommodates</label>
+<select name="accommodates" >
+<option value=1 selected="selected">
+1
+</option>
+<option value="2" >
+2
+</option>
+<option value="3" >
+3
+</option>
+<option value="4" >
+4
+</option>
+<option value="5" >
+5
+</option>
+<option value="6" >
+6
+</option>
+<option value="7" >
+7
+</option>
+<option value="8" >
+8
+</option>
+<option value="9" >
+9
+</option>
+<option value="10" >
+10
+</option>
+<option value="11" >
+11
+</option>
+<option value="12" >
+12
+</option>
+<option value="13" >
+13
+</option>
+<option value="14" >
+14
+</option>
+<option value="15" >
+15
+</option>
+<option value="16" >
+16
+</option>
+</select>
+</div>
+</td>
+
+<td>
+<div>
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="min_price">
+Min Price
+</label>
+<select name="min_price" id="min_price">
+<option value=0 selected="selected">
+0
+</option>
+<option value="30">
+30
+</option>
+<option value="60">
+60
+</option>
+<option value="90">
+90
+</option>
+<option value="120">
+120
+</option>
+<option value="150">
+150
+</option>
+<option value="200" >
+200
+</option>
+<option value="300" >
+300
+</option>
+<option value="400" >
+400
+</option>
+<option value="500" >
+500
+</option>
+<option value="600" >
+600
+</option>
+<option value="700" >
+700
+</option>
+<option value="800" >
+800
+</option>
+<option value="900" >
+900
+</option>
+<option value="1000" >
+1000
+</option>
+</select>
+</div>
+</td>
+
+<td>
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="max_price">
+Max Pirce
+</label>
+<select name="max_price" id="max_price" >
+<option value="0" >
+0
+</option>
+<option value="30" selected="selected">
+30
+</option>
+<option value="60">
+60
+</option>
+<option value="90">
+90
+</option>
+<option value="120">
+120
+</option>
+<option value="150">
+150
+</option>
+<option value="200" >
+200
+</option>
+<option value="300" >
+300
+</option>
+<option value="400" >
+400
+</option>
+<option value="500" >
+500
+</option>
+<option value="600" >
+600
+</option>
+<option value="700" >
+700
+</option>
+<option value="800" >
+800
+</option>
+<option value="900" >
+900
+</option>
+<option value="1000" >
+1000
+</option>
+</select>
+</div>
+</td>
+
+<td>
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="neighbourhood_group_cleansed">Neighbourhood</label>
+<select name="neighbourhood_group_cleansed" id="neighbourhood_group_cleansed" >
+<option value="Manhattan" selected="selected">
+Manhattan
+</option>
+<option value="Brooklyn" >
+Brooklyn
+</option>
+<option value="Queens" >
+Queens
+</option>
+<option value="Staten Island" >
+Staten Island
+</option>
+<option value="Bronx" >
+Bronx
+</option>
+</select>
+</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="first_prefer">First Preference</label>
+<select name="first_prefer" id="first_prefer" >
+<option value="review_scores_rating" selected="selected">
+review_scores_rating
+</option>
+<option value="review_scores_accuracy" >
+review_scores_accuracy
+</option>
+<option value="review_scores_cleanliness" >
+review_scores_cleanliness
+</option>
+<option value="review_scores_checkin" >
+review_scores_checkin
+</option>
+<option value="review_scores_communication" >
+review_scores_communication
+</option>
+<option value="review_scores_location" >
+review_scores_location
+</option>
+<option value="review_scores_value" >
+review_scores_value
+</option>
+</select>
+</div>
+</td>
+
+<td>
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="second_prefer">Second Preference</label>
+<select name="second_prefer" id="second_prefer" >
+<option value="review_scores_rating" >
+review_scores_rating
+</option>
+<option value="review_scores_accuracy" selected="selected">
+review_scores_accuracy
+</option>
+<option value="review_scores_cleanliness" >
+review_scores_cleanliness
+</option>
+<option value="review_scores_checkin" >
+review_scores_checkin
+</option>
+<option value="review_scores_communication" >
+review_scores_communication
+</option>
+<option value="review_scores_location" >
+review_scores_location
+</option>
+<option value="review_scores_value" >
+review_scores_value
+</option>
+</select>
+</div>
+</td>
+
+<td>
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="third_prefer">Third Preference</label>
+<select name="third_prefer" id="third_prefer" >
+<option value="review_scores_rating" >
+review_scores_rating
+</option>
+<option value="review_scores_accuracy" >
+review_scores_accuracy
+</option>
+<option value="review_scores_cleanliness" selected="selected">
+review_scores_cleanliness
+</option>
+<option value="review_scores_checkin" >
+review_scores_checkin
+</option>
+<option value="review_scores_communication" >
+review_scores_communication
+</option>
+<option value="review_scores_location" >
+review_scores_location
+</option>
+<option value="review_scores_value" >
+review_scores_value
+</option>
+</select>
+</div>
+</td>
+
+<td>
+<div class="sb-group__field">
+<label class="sb-searchbox__label sb-group__field__label -inline -small" for="fourth_prefer">Fourth Preference</label>
+<select name="fourth_prefer" id="fourth_prefer" >
+<option value="review_scores_rating" >
+review_scores_rating
+</option>
+<option value="review_scores_accuracy" >
+review_scores_accuracy
+</option>
+<option value="review_scores_cleanliness" >
+review_scores_cleanliness
+</option>
+<option value="review_scores_checkin" selected="selected">
+review_scores_checkin
+</option>
+<option value="review_scores_communication" >
+review_scores_communication
+</option>
+<option value="review_scores_location" >
+review_scores_location
+</option>
+<option value="review_scores_value" >
+review_scores_value
+</option>
+</select>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- <div class="sb-searchbox__row u-clearfix sb-searchbox__footer -last">
+<a href="/find_a_place/" ><button type="button" class="btn btn-info">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Find a Place
+</button></a>
+
+</div> -->
+</center>
+<div align="center" style="margin-bottom: 20px;">
+<!--<input type='submit' value='submit' > -->
+<input type='submit' class="button1" value='Find a place'>
+  </div>
+</form>
+</div>
+</div>
+<div style="margin-left: 50px;">
+<h5>Preference Explanation</h5>
+<ul>
+<li><p><i><b>price: </b>price per person per night, calculation formula is in the documentation</i></p></li>
+<li><p><i><b>review_scores_rating: </b>help you know more about the overall impression from the fomer customers</i></p></li>
+<li><p><i><b>review_scores_accuracy: </b>help you know if the host's discription of the department is relaible</i></p></li>
+<li><p><i><b>review_scores_cleanliness: </b>make sure your home in NYC is clean and comfortable</i></p></li>
+<li><p><i><b>review_scores_checkin: </b>ensure a smooth, trouble-free check-in process together with the host</i></p></li>
+<li><p><i><b>review_scores_communication: </b>efficient, instant and friendly communication and response to reassure a pleasant trip in NYC</i></p></li>
+<li><p><i><b>review_scores_location: </b>the convenient accessibility of Metro, Bus or a yellow cab to make your trip more comfortable</i></p></li>
+<li><p><i><b>review_scores_value: </b>to make the most use of every penny, see if the apartment worth the money</i></p></li>
+</ul>
+</div>
+<hr>
+<div>
+   <center>
+   <figure>
+   <center><figcaption> <h4>Distribution of Accommodates</h4></figcaption></center>
+   <img style="width:1000px;height:500px" src="{{url_for('static',filename='images/district.png')}}">
+   </center>
+</div>
+<div style="margin-top: 50px";>  
+<center>
+<center><h4>Pirce Range by District</h4></center>
+<table>
+<tbody>
+   <tr>
+    <td>
+   <figure>
+   <center><figcaption> <h4>Manhattan</h4></figcaption></center>
+   <img style="width:500px;height:500px" src="{{url_for('static',filename='images/manhattan.png')}}">
+   </td>
+    <td>
+   <figure>
+   <center><figcaption> <h4>Brooklyn</h4></figcaption></center>
+   <img style="width:500px;height:500px" src="{{url_for('static',filename='images/brooklyn.png')}}">
+   </td>
+   </tr>
+
+	<tr>
+    <td>
+   <figure>
+   <center><figcaption> <h4>Queens</h4></figcaption></center>
+   <img style="width:500px;height:500px" src="{{url_for('static',filename='images/queens.png')}}">
+   </td>
+    <td>
+   <figure>
+   <center><figcaption> <h4>Bronx</h4></figcaption></center>
+   <img style="width:500px;height:500px" src="{{url_for('static',filename='images/bronx.png')}}">
+   </td>
+   </tr>
+
+	<tr>
+    <td>
+   <figure>
+   <center><figcaption> <h4>Staten Island</h4></figcaption></center>
+   <img style="width:500px;height:500px" src="{{url_for('static',filename='images/staten_island.png')}}">
+   </td>
+   <td></td>
+   </tr>
+
+
+
+</tbody>
+</table>
+</center>
+</div>
+
+
+
+{%endblock%}

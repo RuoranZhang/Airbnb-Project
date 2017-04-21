@@ -1,0 +1,202 @@
+{%extends "header.html"%}
+
+{%block body%}
+<hr>
+
+<div style="font-size:20px"> <img src= "{{df.loc[id]['thumbnail_url']}}" alt="not available" style="width:100px;height:100px" > {{df.loc[id]['name']}}
+</div>
+<!--
+<div>
+<img style="max-width:300px; margin-top: 300px;" src="{{url_for('static',filename='images/word_could.png')}}">
+
+</div>
+
+<div>
+-->
+  <!-- Nav tabs -->
+<hr>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#information" aria-controls="information" role="tab" data-toggle="tab">Information</a></li>
+    <li role="presentation"><a href="#comparison" aria-controls="comparison" role="tab" data-toggle="tab">Comparison</a></li>
+    <li role="presentation"><a href="#transportation" aria-controls="transportation" role="tab" data-toggle="tab">Transportation</a></li>
+    <li role="presentation"><a href="#documents" aria-controls="documents" role="tab" data-toggle="tab">Documents</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+
+  <div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="information">
+  <center>
+  
+
+  <h2>Basic Information</h2>
+  <div style="text-align:color:rgb(138, 11, 217);">
+  <table border="1" cellspacing="5" cellpadding="30">
+  <tbody>
+  {% for key,value in info_dict.items(): %}
+  <tr>
+  <td><center>{{key}}</center></td>
+  <td><center>{{value}}</center></td>
+  </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+<div>
+  <h2><center>Accommodation Description</center></h2>
+  <div style="width: 75%; margin-left:50px; margin-right: 50px;">
+  <p><i>{{summary_}}</i></p>
+  </div>
+
+</div>
+</div>
+<h2> Top words in the Comments</h2>
+  <div>
+      <img style="max-width:600px;" src="{{url_for('static',filename='images/word_could.png')}}"  align="middle"></div>
+  
+</center>
+  </div>
+
+  <!-- comparison -->
+  <!--
+  <div role="tabpanel" class="tab-pane fade" id="comparison">
+  
+  <table>
+  <tbody>
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/rating.png')}}"></td>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/accuracy.png')}}"></td>
+  </tr>
+
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/cleanliness.png')}}"></td>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/checkin.png')}}"></td>
+  </tr>
+
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/communication.png')}}"></td>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/location.png')}}"></td>
+  </tr>
+
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/value.png')}}"></td>
+
+  </tr>
+  </tbody>
+  </table>
+
+  </div>
+  -->
+  <div role="tabpanel" class="tab-pane fade" id="comparison">
+
+  <div>
+  <center>
+  <table border="1">
+    <tr>
+        <th>Review</th>
+        <th>Score</th>
+        <th>Percentile</th>
+    </tr>
+  {% for item in pctl_list: %}
+    <tr>
+       <td><center>{{item[0]}}</center></td>
+       <td><center>{{item[1]}}</center></td>
+       <td><center>{{item[2]}}</center></td>
+    </tr>
+  {% endfor %}
+  </table>
+  </center>
+  </div>
+
+
+
+  
+  <center>
+  <table>
+  <tbody>
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/rating.png')}}"></td>
+  <td>&nbsp;</td>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/accuracy.png')}}"></td>
+  </tr>
+
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/cleanliness.png')}}"></td>
+  <td>&nbsp;</td>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/checkin.png')}}"></td>
+  </tr>
+
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/communication.png')}}"></td>
+  <td>&nbsp;</td>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/location.png')}}"></td>
+  </tr>
+
+  <tr>
+  <td><img style="width:300px;height:300px" src="{{url_for('static',filename='images/value.png')}}"></td>
+
+  </tr>
+  </tbody>
+  </table>
+  </center>
+  </div>
+
+  <!-- transportation-->
+  
+  
+  <div role="tabpanel" class="tab-pane fade" id="transportation">
+  <center>
+   <h2>Exploring NYC</h2>
+   <table border="1">
+     <tr>
+        <th>Destination</th>
+        <th>Commute Recommendation</th>
+    </tr>
+    {% for value in recom_list: %}
+    <tr>
+        <td><center>{{value[0]}}</center></td>
+        <td><center>{{value[1]}}</center></td>
+  </tr>
+  {%  endfor %}
+   </table>
+
+
+
+
+   <figure>
+   <center><figcaption> <h4>Driving </h4></figcaption></center>
+   <img style="width:800px;height:800px" src="{{url_for('static',filename='images/network_graph_driving.png')}}">
+   
+  </figure>
+   
+   <figure>
+   <center><figcaption> <h4>Walking </h4></figcaption></center>
+   <img style="width:800px;height:800px" src="{{url_for('static',filename='images/network_graph_walking.png')}}">
+   </figure>
+
+  </div>
+  </center>
+  <div role="tabpanel" class="tab-pane fade" id="documents">
+   <p><i>This is the perfect home we recommend to you! Please look at the former tenants' conment and know more about their experience in this house. Check the comparison section and figure out how is this aprtment compared to all others in the whole city. We provide you with a route map among the apartment and all the fun happening in the Big apple. please remember downloading it to your phone!
+   We wish you have a great trip in the most amazing city in the world.</i></p>
+
+   <h3>Suggest a Place</h3>
+   <p><b>First,</b> group the data by accommodates(number of people),price range(min/max price per person per night), and district(Manhattan, Bronx, Brooklyn, Queens, and Staten Island); </p>
+   <p><b>Seconde,</b> sort the data by the four selected preference</p>
+   <p><b>Finally,</b> according to the sorted data, recommend top five qualified accommodation to our customer</p>
+
+   <h3>Go into the Suggested Accommodation</h3>
+
+   <h4>Basic Information:</h4><p> pop out room features and the most common keywords in the comments. </p>
+   <h4>Comparison:</h4><p> given by the previous tenants before and the red straight line represents where this tenement stands, which can provide the user with an intuitive perception about the tenement. Percentiles above the graphs can be considered as a quantitative measure for each aspect of the tenements comparing to others. ‘Percentile is 80%’ means that 80% of values are less than or equal to this score.</p>
+
+   <h4>Transportation:</h4><p>there are plenty of tourist interets in NYC, and the most popular ones are Central Park, Empire State Building, World Trade Center, High Line Park, and Brooklyn Bridge. Based on google API, we calculated the distance and time used for traveling from where you live to the listed tourist interets both by driving and by walking. If the walking distance is less than 2km, we recommend walking, otherwise, we suggest driving. </p>
+
+   <h3> Calculation Formula for Price---per person per night</h3>
+   <p><i>per_person_per_night_price = (price*minimun_nights+cleaning_fee)/(minimum_nights*guests_included)</i></p>
+   <p><b>Assumptions: </b> all the customers stay in one airbnb for minmum number of nights required by the host</p> 
+   
+  </div>
+
+
+{%endblock%}
